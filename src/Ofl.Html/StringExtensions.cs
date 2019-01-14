@@ -1,7 +1,6 @@
 ﻿using System;
-using AngleSharp;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
+using AngleSharp.Html.Dom;
+using AngleSharp.Html.Parser;
 
 namespace Ofl.Html
 {
@@ -10,20 +9,19 @@ namespace Ofl.Html
         public static IHtmlDocument ToHtmlDocument(this string str)
         {
             // Call the overload with the default.
-            return str.ToHtmlDocument(Configuration.Default);
+            return str.ToHtmlDocument(default);
         }
 
-        public static IHtmlDocument ToHtmlDocument(this string str, IConfiguration configuration)
+        public static IHtmlDocument ToHtmlDocument(this string str, HtmlParserOptions parserOptions)
         {
             // Validate parameters.
             if (str == null) throw new ArgumentNullException(nameof(str));
-            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
             // Create a parser.
-            var parser = new HtmlParser(configuration);
+            var parser = new HtmlParser(parserOptions);
 
             // Parse.
-            return parser.Parse(str);
+            return parser.ParseDocument(str);
         }
     }
 }
