@@ -10,13 +10,14 @@ namespace Ofl.Html
 {
     public static class TextReaderExtensions
     {
-        public static Task<IHtmlDocument> ToHtmlDocumentAsync(this TextReader reader, CancellationToken cancellationToken)
-        {
-            // Call the overload with the default.
-            return reader.ToHtmlDocumentAsync(default, cancellationToken);
-        }
+        public static Task<IHtmlDocument> ToHtmlDocumentAsync(this TextReader reader, CancellationToken cancellationToken) =>
+            reader.ToHtmlDocumentAsync(default, cancellationToken);
 
-        public static async Task<IHtmlDocument> ToHtmlDocumentAsync(this TextReader reader, HtmlParserOptions parserOptions, CancellationToken cancellationToken)
+        public static async Task<IHtmlDocument> ToHtmlDocumentAsync(
+            this TextReader reader, 
+            HtmlParserOptions parserOptions, 
+            CancellationToken cancellationToken
+        )
         {
             // Validate parameters.
             if (reader == null) throw new ArgumentNullException(nameof(reader));

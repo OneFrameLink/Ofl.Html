@@ -6,11 +6,8 @@ namespace Ofl.Html
 {
     public static class StringExtensions
     {
-        public static IHtmlDocument ToHtmlDocument(this string str)
-        {
-            // Call the overload with the default.
-            return str.ToHtmlDocument(default);
-        }
+        public static IHtmlDocument ToHtmlDocument(this string str) => 
+            str.ToHtmlDocument(default);
 
         public static IHtmlDocument ToHtmlDocument(this string str, HtmlParserOptions parserOptions)
         {
